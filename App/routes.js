@@ -1,13 +1,12 @@
 'use strict';
 
-const express = require( 'express' );
-const router  = express.Router();
-
-const ROOT    = '/';
+const router           = require( 'express' ).Router( );
+const Database         = require( './Models/DB' );
+new Database( );
 
 // View main entrypoint.
 router.get( '/', ( req,res ) => {
-  res.send( 'ROOT DIRECTORY' );
+  res.render( 'index' );
 } );
 
 // API entrypoints.
@@ -26,5 +25,8 @@ router.post( '/new-user', ( req,res ) => {
 router.post( '/add', ( req,res ) => {
   res.send( 'POST ADD' );
 } );
+
+// 404 errors.
+router.all( '*', ( req,res ) => res.status( 404 ).render( '404' ) );
 
 module.exports = router;
