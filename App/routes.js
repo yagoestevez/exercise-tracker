@@ -14,9 +14,9 @@ router.get( `/`, ( req,res ) => {
 } );
 
 // API entrypoints.
-router.get( `${API}/users`, ( req,res ) => {
-  res.send( 'GET USERS' );
-} );
+router.get(
+  `${API}/users`, async ( req,res ) => res.send( await userController.getUser( req ) )
+);
 
 router.get( `${API}/log`, ( req,res ) => {
   res.send( 'GET LOG' );
@@ -24,7 +24,7 @@ router.get( `${API}/log`, ( req,res ) => {
 
 router.post(
   `${API}/new-user`,
-  async ( req,res ) => res.send( await userController.postNewUser ( req ) )
+  async ( req,res ) => res.send( await userController.postNewUser( req ) )
 );
 
 router.post( `${API}/add`, ( req,res ) => {
