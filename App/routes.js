@@ -1,28 +1,33 @@
 'use strict';
 
-const router           = require( 'express' ).Router( );
-const Database         = require( './Models/DB' );
+const router         = require( 'express' ).Router( );
+const UserController = require( './Controllers/UserController' );
+const Database       = require( './Models/DB' );
+const userController = new UserController( );
 new Database( );
 
+const API = '/api/exercise';
+
 // View main entrypoint.
-router.get( '/', ( req,res ) => {
+router.get( `/`, ( req,res ) => {
   res.render( 'index' );
 } );
 
 // API entrypoints.
-router.get( '/users', ( req,res ) => {
+router.get( `${API}/users`, ( req,res ) => {
   res.send( 'GET USERS' );
 } );
 
-router.get( '/log', ( req,res ) => {
+router.get( `${API}/log`, ( req,res ) => {
   res.send( 'GET LOG' );
 } );
 
-router.post( '/new-user', ( req,res ) => {
-  res.send( 'POST NEW USER' );
-} );
+router.post(
+  `${API}/new-user`,
+  async ( req,res ) => res.send( await userController.postNewUser ( req ) )
+);
 
-router.post( '/add', ( req,res ) => {
+router.post( `${API}/add`, ( req,res ) => {
   res.send( 'POST ADD' );
 } );
 
