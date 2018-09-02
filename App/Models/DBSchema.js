@@ -5,9 +5,10 @@ const mongoose = require( 'mongoose' );
 const userSchema  = new mongoose.Schema( {
   username: { 
     type      : String,
-    required  : true,
     unique    : true,
-    maxlength : [ 30 ]
+    minlength : 3,
+    maxlength : 30,
+    required  : true
   },
   created_on: {
     type      : Date,
@@ -15,8 +16,35 @@ const userSchema  = new mongoose.Schema( {
   }
 } );
 
+const trainingSchema = new mongoose.Schema( {
+  username: {
+    type      : String,
+    index     : true,
+    ref       : 'Users',
+    required  : true
+  },
+  name: {
+    type      : String,
+    maxlength : 30,
+    required  : true
+  },
+  time: {
+    type      : Number,
+    min       : 0,
+    max       : 1440,
+    required  : true
+  },
+  date: {
+    type      : Date,
+    default   : Date.now
+  }
+} );
+
 module.exports = {
   getUserSchema : async ( ) => {
     return await mongoose.model( 'User', userSchema, 'Users' );
   },
+  getTrainingSchema : async ( ) => {
+    return await mongoose.model( 'Training', trainingSchema, 'Training' );
+  }
 }
