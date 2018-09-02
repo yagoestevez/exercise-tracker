@@ -5,6 +5,12 @@ const Schema   = require( './DBSchema' );
 
 module.exports = class UserModel {
 
+  async getUsers ( ) {
+    const User = await Schema.getUserSchema( );
+    const user = await User.find( {} );
+    return user;
+  }
+
   async addUser ( username ) {
     const User = await Schema.getUserSchema( );
     const user = new User( { username, created_on: new Date( ) } );

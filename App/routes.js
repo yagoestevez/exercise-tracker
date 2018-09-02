@@ -15,7 +15,7 @@ router.get( `/`, ( req,res ) => {
 
 // API entrypoints.
 router.get(
-  `${API}/users`, async ( req,res ) => res.send( await userController.getUser( req ) )
+  `${API}/users`, async ( req,res ) => res.send( await userController.getUsers( ) )
 );
 
 router.get( `${API}/log`, ( req,res ) => {

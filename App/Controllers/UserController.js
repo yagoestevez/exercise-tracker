@@ -8,6 +8,12 @@ module.exports = class UserController {
     this.userModel = new UserModel( );
   }
 
+  async getUsers ( ) {
+    const users = await this.userModel.getUsers( );
+    if ( !users ) users = `There are no users registered yet.`
+    return users;
+  }
+
   async postNewUser ( req ) {
     if ( !req.body.username ) {
       throw { code: 400, text: `A parameter "username" is required.` };
