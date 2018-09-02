@@ -1,9 +1,11 @@
 'use strict';
 
-const router         = require( 'express' ).Router( );
-const UserController = require( './Controllers/UserController' );
-const Database       = require( './Models/DB' );
-const userController = new UserController( );
+const router             = require( 'express' ).Router( );
+const UserController     = require( './Controllers/UserController' );
+const TrainingController = require( './Controllers/TrainingController' );
+const Database           = require( './Models/DB' );
+const userController     = new UserController( );
+const trainingController = new TrainingController( );
 new Database( );
 
 const API = '/api/exercise';
@@ -15,23 +17,19 @@ router.get( `/`, ( req,res ) => {
 
 // API entrypoints.
 router.get(
-  `${API}/users`, async ( req,res ) => res.send( await userController.getUsers( ) )
+  `${API}/users`    , async ( req,res ) => res.send( await userController.getUsers( ) )
 );
-
-router.get( `${API}/log`, ( req,res ) => {
-  res.send( 'GET LOG' );
-} );
-
 router.post(
-  `${API}/new-user`,
-  async ( req,res ) => res.send( await userController.postNewUser( req ) )
+  `${API}/new-user` , async ( req,res ) => res.send( await userController.registerUser( req ) )
 );
-
-router.post( `${API}/add`, ( req,res ) => {
-  res.send( 'POST ADD' );
-} );
+router.get(
+  `${API}/log`      , async ( req,res ) => res.send( await trainingController.getTrainings( req ) )
+);
+router.post(
+  `${API}/add`      , async ( req,res ) => res.send( await trainingController.registerTraining( req ) )
+);
 
 // 404 errors.
-router.all( '*', ( req,res ) => res.status( 404 ).render( '404' ) );
+router.all( '*' , ( req,res ) => res.status( 404 ).render( '404' ) );
 
 module.exports = router;

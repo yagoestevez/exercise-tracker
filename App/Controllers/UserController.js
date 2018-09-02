@@ -14,11 +14,11 @@ module.exports = class UserController {
     return users;
   }
 
-  async postNewUser ( req ) {
+  async registerUser ( req ) {
     if ( !req.body.username ) {
       throw { code: 400, text: `A parameter "username" is required.` };
     }
-    const newUser = await this.userModel.addUser( req.body.username );
+    const newUser = await this.userModel.saveUser( req.body.username );
     return newUser;
   }
 

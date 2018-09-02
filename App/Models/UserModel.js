@@ -11,7 +11,7 @@ module.exports = class UserModel {
     return user;
   }
 
-  async addUser ( username ) {
+  async saveUser ( username ) {
     const User = await Schema.getUserSchema( );
     const user = new User( { username, created_on: new Date( ) } );
     return await user.save( );
