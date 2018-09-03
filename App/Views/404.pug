@@ -1,6 +1,20 @@
 <!DOCTYPE html>
-html(lang="en")
-  include Partials/header.pug
+html( lang="en" )
+  head
+    meta( charset="UTF-8" )
+    meta( http-equiv="X-UA-Compatible", content="ie=edge" )
+    meta( name="viewport",   content="width=device-width, initial-scale=1.0" )
+    meta( name="author"      content="Yago Estévez" )
+    meta( name="description" content="An activity logger project for freeCodeCamp certification" )
+    meta( name="keywords"    content="freecodecamp, nodejs, node, express, javascript, mongodb, mongoose" )
+    link(
+      rel="stylesheet" crossorigin="anonymous"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    )
+    link( rel="stylesheet"   href="/assets/main.css" )
+    link( rel="stylesheet"   href="https://fonts.googleapis.com/css?family=Raleway" )
+    title VLogger by Yago Estévez
 
   body.text-center
     .jumbotron
@@ -10,5 +24,9 @@ html(lang="en")
       .lead
         a.btn.btn-primary.btn-lg( href="/" ) Back to index
 
-
-    include Partials/footer.pug
+    footer
+      p.mt-4.mb-2 by 
+        a(
+          href="https://twitter.com/yagoestevez"
+          target="_blank" rel="noopener noreferrer"
+        ) Yago Estévez

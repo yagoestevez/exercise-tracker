@@ -15,7 +15,9 @@ const PORT = process.env.PORT || 3000;
 
 app.set( 'view engine', 'pug' );
 app.set( 'views', './App/Views' );
-app.use( '/assets', express.static( 'App/Views/Assets' ) );
+app.use( '/assets', express.static( 'App/Views/Assets/' ) );
+app.use( '/css', express.static( 'App/Views/Assets/' ) );
+app.use( '/js', express.static( 'App/Views/Assets/' ) );
 app.use( cors( ) );
 app.use( express.urlencoded( { extended: true } ) );
 app.use( express.json( ) );

@@ -9,7 +9,56 @@
 
 body {
   height            : 100%;
-  font-family       : 'Markazi Text', serif !important;
+  font-family       : "Raleway", sans-serif;
   font-size         : 1.4rem !important;
   padding           : 2rem;
+}
+
+
+
+
+.btn-primary,
+.btn-primary:visited {
+  background: #008300 !important;
+  border-color: #008300 !important;
+  color: #fefefe;
+  transition: 300ms;
+}
+.btn-primary:hover,
+.btn-primary:active {
+  background: #006400 !important;
+  border-color: #006400 !important;
+}
+
+
+.btn:focus {
+  border-color: #008300 !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #008300aa !important;
+}
+
+a,
+a:visited {
+  color: #008300;
+  text-decoration: none;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  transition: 300ms;
+}
+
+a:hover,
+a:active {
+  text-decoration: underline;
+  color: #588158;
+}
+
+.bg-primary {
+  background: #008300 !important;
+}
+
+.bg-secondary {
+  background: #588158 !important;
+}
+
+::placeholder {
+  color: #85a585 !important;
 }
