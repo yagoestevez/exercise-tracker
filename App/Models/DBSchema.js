@@ -25,7 +25,7 @@ const trainingSchema = new mongoose.Schema( {
   },
   name: {
     type      : String,
-    maxlength : 30,
+    maxlength : 100,
     required  : true
   },
   time: {

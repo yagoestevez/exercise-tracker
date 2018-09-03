@@ -24,9 +24,8 @@ module.exports = class UserController {
     } );
     const validation = Joi.validate( req.body, schema );
     if ( validation.error )
-      throw { code: 400, text: 'A parameter "username" is required.'  };
-    const newUser = await this.userModel.saveUser( req.body.username );
-    return newUser;
+      throw { code: 400, text: 'A username is required.'  };
+    return await this.userModel.saveUser( req.body.username );
   }
 
 }

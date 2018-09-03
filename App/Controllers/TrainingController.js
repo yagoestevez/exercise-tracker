@@ -10,6 +10,7 @@ module.exports = class TrainingController {
   }
 
   async getTrainings ( req ) {
+    console.log( req.query );
     const schema = Joi.object( ).keys( {
       username: Joi.string( ).alphanum( ).min( 3 ).max( 30 ).required( ),
       from    : Joi.date( ),
@@ -26,12 +27,12 @@ module.exports = class TrainingController {
   async registerTraining ( req ) {
     const schema = Joi.object( ).keys( {
       username: Joi.string( ).alphanum( ).min( 3 ).max( 30 ).required( ),
-      name    : Joi.string( ).alphanum( ).max( 30 ).required( ),
+      name    : Joi.string( ).max( 100 ).required( ),
       time    : Joi.number( ).max( 1440 ).required( ),
       date    : Joi.date( )
     } );
     const validation = Joi.validate( req.body, schema );
-    if ( validation.error )
+    if ( validation.error ) 
       throw { code: 400, text: 'Required fields: \n\tString: "username" \n\tString "name" \n\tNumber: "time" \nOptional fields: \n\tDate: "date"' };
     const savedTraining = await this.trainingModel.saveTraining( req.body );
     if ( !savedTraining )
