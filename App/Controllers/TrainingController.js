@@ -10,7 +10,6 @@ module.exports = class TrainingController {
   }
 
   async getTrainings ( req ) {
-    console.log( req.query );
     const schema = Joi.object( ).keys( {
       username: Joi.string( ).alphanum( ).min( 3 ).max( 30 ).required( ),
       from    : Joi.date( ),
